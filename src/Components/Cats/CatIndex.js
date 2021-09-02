@@ -15,14 +15,14 @@ class CatIndex extends Component{
 
  componentDidMount(){
    this.setState({
-     breeds: this.breeds
+     breeds: this.state.breeds
    })
  }
 
   render(){
     return(
     <div>
-      <CatList cats={this.state.breeds} />
+      <CatList breeds={this.state.breeds} />
     </div>
     )    
   };

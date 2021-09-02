@@ -1,41 +1,17 @@
 import React, { Component, useState } from 'react';
  
-
-
 const CatList = (props) => {
 
-  const [cat, setCat] = useState(null);
+  //const [cats, setCats] = useState([]);
 
-  console.log(props)
-  //mapCats(catArray)
+  console.log(props.breeds)
+
 
  return (
-   <div>
-     
-     {/* {catArray.Map((cat) => {
-       return(
-        <li>{cat}</li>
-       )
-    })} */}
-
-    {Object.entries(props).map(([key, val], i) => (
-        <li key>
-            {key}: {i.val}
-        </li>
-    ))}
-
-    
-
-   </div>
+   <ul>
+    {props.breeds.map((cat, i) => <li key={i}>{cat}</li>)}
+   </ul>
  )
-}
-
-const mapCats = (cats) =>{
-  cats.Map(cat => {
-    return(
-      console.log(cat)
-    )
-  })
 }
  
 export default CatList;
