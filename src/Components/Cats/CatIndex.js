@@ -1,19 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import CatList from './CatList';
  
-class CatIndex {
+class CatIndex extends Component{
+
+  // const [breeds, setBreeds] = useState([]);
+
  constructor(){
-   super(props)
-   state : {
+   super()
+   this.state = {
      breeds: ['persian', 'siamese', 'maine coon', 'ragdoll', 'scottish fold', 'sphynx', 'british shorthair', 'bengal', 'american shorthair']
    }
+  //  console.log(this.state.breeds)
  }
 
-   return (
-     <div>
-      <CatList cats={breeds} />
-     </div>
-   );
+ componentDidMount(){
+   this.setState({
+     breeds: this.breeds
+   })
+ }
+
+  render(){
+    return(
+    <div>
+      <CatList cats={this.state.breeds} />
+    </div>
+    )    
+  };
 
 }
+
+export default CatIndex;
 
