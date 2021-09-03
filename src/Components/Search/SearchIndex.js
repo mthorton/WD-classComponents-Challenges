@@ -1,51 +1,40 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import {Input} from 'reactstrap';
  
-const SearchIndex = () => {
-
-  const [input, setInput] = useState('');
-  const [data, setData] = useState([])
-  const [defaultData, setDefaultData] = useState([])
-
-  class ArrayData extends Component {
-    constructor(){
-      super()
-      this.state = {
-        things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
-      }
+class SearchIndex extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards'],
+      text: '',
+      results: []
     }
   }
-   
-  let newData = new ArrayData;
-  //console.log(newData.state.things)
-  let searchData = newData.state.things;
-  //console.log(searchData);
 
-  for(let i = 0; i < searchData.length; i++){
-    data.push(searchData[i])
-    defaultData.push(searchData[i])
-  }
+ componentDidMount(){
+  this.setState({
+    things: this.state.things
+  })
+}
 
-  console.log(data)
-  console.log(defaultData)
+handleChange = event => {
+    this.setState({ text: event.target.value });
+};
 
-  const searchFunction = async (input) => {
-    const search = defaultData.filter(item => {
-      return item.toLowerCase().includes(input.toLowerCase())
-    })
-    setInput(input);
-    setData(search);
-   }
+ searchFunction() {
 
- 
+ };
+
+ render() {
    return(
       <div>
-       <Input placeholder='Search Here' onChange={searchFunction}/>
-       <h3>Results:</h3>
-      </div>
+       <Input placeholder='Search Here' onChange={this.handleChange} />
+       <h3>Test: {this.state.text}</h3>
+       <h3 onChange={this.searchFunction}>Results: </h3>
+     </div>
    )
      
- 
+ }
 }
 
 export default SearchIndex;
